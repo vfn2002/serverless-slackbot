@@ -8,9 +8,9 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout
+    - uses: actions/checkout@master
     - name: npm install
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@master
       with:
         node-version: '12.x'
     - run: npm install
