@@ -10,7 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout
     - name: npm install
-      uses: actions/setup-node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
     - run: npm install
     - name: serverless deploy
       uses: serverless/github-action@master
