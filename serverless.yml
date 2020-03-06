@@ -3,10 +3,6 @@ service: botbot
 app: botbot-app
 org: vfn2002
 
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
-# frameworkVersion: "=X.X.X"
-
 provider:
   name: aws
   runtime: nodejs12.x
