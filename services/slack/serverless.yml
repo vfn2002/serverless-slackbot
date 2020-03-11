@@ -1,0 +1,36 @@
+service: slack
+app: serverless-slackbot
+org: vfn2002
+
+custom:
+  snsTopicArn: 'arn:aws:sns:eu-central-1:600242996258:slack-response-dev-topic'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: eu-central-1
+  iamRoleStatements:
+  - Effect: "Allow"
+    Resource: "*"
+    Action:
+      - "sns:Publish"
+
+functions:
+  addResponse:
+    handler: handler.addResponse
+    environment:
+      snsTopicArn: ${self:custom.snsTopicArn}
+    events:
+      - http:
+          path: response
+          method: post
+          integration: lambda
+
+resources:
+  Resources:
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        DisplayName: Slack Response Topic
+        TopicName: ${self:service}-response-${self:provider.stage}-topic

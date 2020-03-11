@@ -1,0 +1,10 @@
+{
+  "name": "slack",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "aws-sdk": "2.636.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
