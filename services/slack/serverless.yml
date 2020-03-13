@@ -3,7 +3,8 @@ app: serverless-slackbot
 org: vfn2002
 
 custom:
-  snsTopicArn: 'arn:aws:sns:eu-central-1:600242996258:slack-response-dev-topic'
+  snsTopicArn:
+    Ref: SNSTopic
 
 provider:
   name: aws
@@ -34,3 +35,15 @@ resources:
       Properties:
         DisplayName: Slack Response Topic
         TopicName: ${self:service}-response-${self:provider.stage}-topic
+
+  Outputs:
+    ResponseTopicArn:
+      Value:
+        Ref: SNSTopic
+      Export:
+        Name: ${self:provider.stage}-ExtResponseTopicArn
+
+    ResponseTopicName:
+      Value: ${self:service}-response-${self:provider.stage}-topic
+      Export:
+        Name: ${self:provider.stage}-ExtResponseTopicName
