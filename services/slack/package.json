@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "devDependencies": {
-    "aws-sdk": "2.636.0"
+    "aws-sdk": "2.814.0"
   },
   "author": "",
   "license": "ISC"
